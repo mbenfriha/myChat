@@ -1,0 +1,28 @@
+{"User":{
+	"pseudo": "String", 		
+	"passwd": "SecureString", 	 
+	"name": "String",
+	"birth": "Date",
+	"country": "String",			 
+	"langue": "String",			 
+	"fbCount": "FbKey",
+	"avatar": "image",
+	"mail": "String",			 
+	"signInDate": "Date",
+	"friend": {
+		"User[]": "User[]",
+		"request": "String"
+	},
+	"isConnected": "boolean"
+},
+
+"Dialog":{
+	"dialogName": "String",
+	"users": "User[]",
+	"messages": {
+		"sender": "idUser",
+		"date": "Date",
+		"content": "String"
+	},
+	"isPublic" : "boolean",
+}}
