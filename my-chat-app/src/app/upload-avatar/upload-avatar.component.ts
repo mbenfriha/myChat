@@ -130,10 +130,11 @@ export class UploadAvatarComponent implements AfterViewInit {
   @ViewChild(LyResizingCroppingImages) cropper: LyResizingCroppingImages;
   myConfig: ImgCropperConfig = {
     autoCrop: true,
-    width: 150, // Default `250`
-    height: 150, // Default `200`
+    width: 120, // Default `250`
+    height: 120, // Default `200`
     fill: '#ff2997', // Default transparent if type = png else #000,
-    type: 'image/jpeg'
+    type: 'image/jpeg image/png',
+    maxFileSize: 2000000
   };
 
   constructor(
@@ -172,7 +173,13 @@ export class UploadAvatarComponent implements AfterViewInit {
     console.log('img loaded', e);
   }
   onerror(e: ImgCropperErrorEvent) {
-    console.warn(`'${e.name}' is not a valid image`, e);
+    if (e.size > 2000000)  {
+      alert('Votre image est trop lourd, maximum 2MO');
+      console.warn(`'${e.name}' is not a valid image`, e);
+    } else {
+      alert('Un problème est survenu, verifiez le format de l\'image, uniquement JPEG & PNG');
+
+    }
   }
 
 
