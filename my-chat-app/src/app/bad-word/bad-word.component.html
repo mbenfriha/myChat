@@ -1,0 +1,7 @@
+<div>
+  <form>
+<input type="text" placeholder="Tapez votre message" [formControl]="message">
+<button ly-button type="submit" (click)="filterAndSend()">Send !</button>
+<p *ngIf="resultMessage">{{resultMessage}}</p>
+</form>
+</div>

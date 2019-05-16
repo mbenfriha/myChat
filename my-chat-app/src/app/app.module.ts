@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -18,6 +18,7 @@ import { LyButtonModule } from '@alyle/ui/button';
 import { LyToolbarModule } from '@alyle/ui/toolbar';
 import { LyResizingCroppingImageModule } from '@alyle/ui/resizing-cropping-images';
 import { LyIconModule } from '@alyle/ui/icon';
+import { BadWordComponent } from './bad-word/bad-word.component';
 
 
 
@@ -26,7 +27,8 @@ import { LyIconModule } from '@alyle/ui/icon';
 @NgModule({
   declarations: [
     AppComponent,
-    UploadAvatarComponent
+    UploadAvatarComponent,
+    BadWordComponent
   ],
   imports: [
     BrowserModule,
@@ -40,11 +42,12 @@ import { LyIconModule } from '@alyle/ui/icon';
     CommonModule,
     FormsModule,
     LyIconModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
 
   providers: [{ provide: LY_THEME, useClass: MinimaLight, multi: true }],
   bootstrap: [AppComponent],
-  exports: [UploadAvatarComponent],
+  exports: [UploadAvatarComponent, BadWordComponent],
 })
 export class AppModule { }
