@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -38,6 +40,7 @@ import { LyIconModule } from '@alyle/ui/icon';
     CommonModule,
     FormsModule,
     LyIconModule,
+    HttpClientModule
   ],
 
   providers: [{ provide: LY_THEME, useClass: MinimaLight, multi: true }],
