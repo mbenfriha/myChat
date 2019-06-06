@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { MatSidenavModule } from '@angular/material';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { LyToolbarModule } from '@alyle/ui/toolbar';
 import { LyResizingCroppingImageModule } from '@alyle/ui/resizing-cropping-images';
 import { LyIconModule } from '@alyle/ui/icon';
 import { BadWordComponent } from './bad-word/bad-word.component';
+import { SideNavLeftModule } from './sidenav-left/sidenav-left.module';
 
 
 
@@ -31,6 +33,8 @@ import { BadWordComponent } from './bad-word/bad-word.component';
     BadWordComponent
   ],
   imports: [
+    SideNavLeftModule,
+    MatSidenavModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

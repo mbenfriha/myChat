@@ -21,8 +21,8 @@ const STYLES = (theme: ThemeVariables) => ({
 export class AppComponent {
   readonly classes = this.theme.addStyleSheet(STYLES);
 
-  title = 'my-chat-app';
-
+  title = 'Friends With Interest';
+  opened: boolean;
   constructor(private theme: LyTheme2) { }
 
 }
