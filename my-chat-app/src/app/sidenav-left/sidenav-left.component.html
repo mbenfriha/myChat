@@ -1,9 +1,9 @@
 <div>
-	<h1>Menu</h1>
+	<h1>{{getLogin()}}</h1>
 	<button ly-button>Connexion</button>
 	<button ly-button>Déconnexion</button>
 
-	<div *ngFor="let c of conversations">
+	<div>
 		<mat-card>
 			<mat-card-title>
 				{{c.nom}}

@@ -15,7 +15,6 @@ export class BadWordComponent implements AfterViewInit {
   badWords: string[];
   
   constructor(
-    public http: HttpClient,
   ) {}
 
    

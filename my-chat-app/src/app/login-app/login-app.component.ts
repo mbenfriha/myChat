@@ -1,15 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-app',
+  selector: 'app-login',
   templateUrl: './login-app.component.html',
-  styleUrls: ['./login-app.component.scss']
 })
 export class LoginAppComponent implements OnInit {
 
-  constructor() { }
+  model: any = {};
 
-  ngOnInit() {
+  constructor(
+    private router: Router
+  ) { }
+
+  ngOnInit() { }
+
+  login() {
+    console.log('Tentative de connexion');
+
+    // Vérifier que login/mdp sont correctes, par exemple par une requête à un service REST
+    localStorage.setItem('user', JSON.stringify({login : this.model.username}));
+    this.router.navigate(['/home']);
   }
-
 }

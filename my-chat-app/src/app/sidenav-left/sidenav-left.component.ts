@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
 })
 export class SideNavLeftComponent {
   constructor() {}
+
+  getLogin() {
+    return JSON.parse(localStorage.getItem('user')).login;
+  }
+  
 }

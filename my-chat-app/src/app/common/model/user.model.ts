@@ -3,4 +3,6 @@ export class User{
 	password: string;
 	avatar: ImageBitmap;
 	online: boolean;
+	friends: string[]; // pseudo uniquement
+	
 }

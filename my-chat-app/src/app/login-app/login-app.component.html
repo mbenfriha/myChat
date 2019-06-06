@@ -1,7 +1,16 @@
-<p>
-  login-app works!
-</p>
-<div>
-  <input placeholder="Nom d'utilisateur"/>
-  <input placeholder="Mot de passe"/>
-</div>
+<div class="col-md-6 col-md-offset-3" style="text-align:center">
+    <div class="login-wrapper">
+      <h2>Connexion</h2>
+      <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input matInput type="text" class="form-control" name="username" id="username" [(ngModel)]="model.username" #username="ngModel" placeholder="Nom d'utilisateur" required />
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <input matInput type="password" class="form-control" name="password" id="password" [(ngModel)]="model.password" #password="ngModel" placeholder='Mot de passe' required />
+        </div>
+        <div class="form-group">
+          <button mat-button class="btn btn-primary pull-right" [disabled]="!f.form.valid">Connexion</button>
+        </div>
+      </form>
+    </div>
+  </div>
