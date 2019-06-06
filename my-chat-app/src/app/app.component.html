@@ -1,16 +1,38 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center;margin-top:2%;">
-  <h1>
-   {{ title }}
-  </h1>
-</div>
+
+<!--
+
+
 <mat-sidenav #sidenav mode="side" [(opened)]="opened">
-<sidenav-left></sidenav-left>
+
 </mat-sidenav>
+
+
 <button ly-button (click)="sidenav.toggle()">Menu</button>
+-->
 
 
-<router-outlet></router-outlet>
+
+
+
+
+<mat-sidenav-container >
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <sidenav-left></sidenav-left>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div style="text-align:center;margin-top:2%;">
+      <h1>
+        {{ title }}
+      </h1>
+    </div>
+
+    <button ly-button (click)="sidenav.toggle()">Menu</button>
+
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 
 
 
