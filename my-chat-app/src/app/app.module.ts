@@ -21,6 +21,7 @@ import { LyResizingCroppingImageModule } from '@alyle/ui/resizing-cropping-image
 import { LyIconModule } from '@alyle/ui/icon';
 import { BadWordComponent } from './bad-word/bad-word.component';
 import { SideNavLeftModule } from './sidenav-left/sidenav-left.module';
+import { LoginAppComponent } from './login-app/login-app.component';
 
 
 
@@ -30,7 +31,8 @@ import { SideNavLeftModule } from './sidenav-left/sidenav-left.module';
   declarations: [
     AppComponent,
     UploadAvatarComponent,
-    BadWordComponent
+    BadWordComponent,
+    LoginAppComponent
   ],
   imports: [
     SideNavLeftModule,
