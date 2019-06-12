@@ -12,7 +12,10 @@ export class UserService {
 	){}
 
 	login(pseudo:string): Observable<User>{
-		return this.http.get<User>(`${pseudo}`);
+		return this.http.get<User>(`/profil/${pseudo}`);
+	}
 
+	getUserByPseudo(pseudo: string): Observable<User> {
+		return this.http.get<User>(`/friends/${pseudo}`);
 	}
 }

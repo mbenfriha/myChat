@@ -1,14 +1,15 @@
 <div>
-	<h1>{{getLogin()}}</h1>
-	<button ly-button>Connexion</button>
-	<button ly-button>Déconnexion</button>
+	<h1>{{connected.name}}</h1>
+	<button ly-button RouterLink="/edit">Mon profil</button>
+	<button ly-button RouterLink="/">Déconnexion</button>
 
 	<div>
-		<mat-card>
-			<mat-card-title>
-				{{c.nom}}
+		<mat-card *ngFor="let friend of friends">
+			<mat-card-title >
+				<button mat-button (click)="talkTo(friend)">{{friend}}</button>
 			</mat-card-title>
 			<mat-card-content>
+				<i>Voici le dernier message envoyé entre vous et {{friend}}</i>
 			</mat-card-content>
 		</mat-card>
 		

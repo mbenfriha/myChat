@@ -3,13 +3,17 @@ import { LyButtonModule } from '@alyle/ui/button';
 import { CommonModule } from '@angular/common';
 import { LoginAppComponent } from './login-app.component';
 import { MatInputModule, MatButton } from '@angular/material';
+import { HomeModule } from '../home-component/home.module';
+import { ProfilFormModule } from '../profil-form/profil.form.module';
 
 @NgModule({
 	imports:[
 		LyButtonModule,
 		CommonModule,
 		MatInputModule,
-		MatButton
+		MatButton,
+		HomeModule,
+		ProfilFormModule,
 	],
 	exports:[LoginAppComponent],
 	declarations:[LoginAppComponent]

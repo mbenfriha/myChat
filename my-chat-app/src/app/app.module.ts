@@ -22,6 +22,10 @@ import { LyIconModule } from '@alyle/ui/icon';
 import { BadWordComponent } from './bad-word/bad-word.component';
 import { SideNavLeftModule } from './sidenav-left/sidenav-left.module';
 import { LoginAppComponent } from './login-app/login-app.component';
+import { HomeModule } from './home-component/home.module';
+import { HomeComponent } from './home-component/home.component';
+import { ProfilFormComponent } from './profil-form/profil.form.component';
+import { ProfilFormModule } from './profil-form/profil.form.module';
 
 
 
@@ -32,7 +36,7 @@ import { LoginAppComponent } from './login-app/login-app.component';
     AppComponent,
     UploadAvatarComponent,
     BadWordComponent,
-    LoginAppComponent
+    LoginAppComponent,
   ],
   imports: [
     SideNavLeftModule,
@@ -40,16 +44,18 @@ import { LoginAppComponent } from './login-app/login-app.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    LyThemeModule.setTheme('minima-light'),
     BrowserAnimationsModule,
     LyButtonModule,
+    LyThemeModule.setTheme('minima-light'),
     LyToolbarModule,
     LyResizingCroppingImageModule,
     CommonModule,
     FormsModule,
     LyIconModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HomeModule,
+    ProfilFormModule
   ],
 
   providers: [{ provide: LY_THEME, useClass: MinimaLight, multi: true }],

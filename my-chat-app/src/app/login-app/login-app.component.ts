@@ -20,6 +20,7 @@ export class LoginAppComponent implements OnInit {
 
     // Vérifier que login/mdp sont correctes, par exemple par une requête à un service REST
     localStorage.setItem('user', JSON.stringify({login : this.model.username}));
+    localStorage.setItem('profil', JSON.stringify({name: this.model.username, online: true, friends: ['AquaBadTrip','Blinkix', 'Pingourou']}))
     this.router.navigate(['/home']);
   }
 }
