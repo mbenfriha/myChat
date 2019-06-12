@@ -16,11 +16,18 @@ export class LoginAppComponent implements OnInit {
   ngOnInit() { }
 
   login() {
-    console.log('Tentative de connexion');
+    // Vérifier  login/mdp requete api
+    localStorage.setItem('user', JSON.stringify({name : this.model.username, online: true, friends: ['AquaBadTrip','Blinkix', 'Pingourou']}));
+    this.router.navigate(['/home']);
+  }
+  
+  toSignIn(){
+    this.router.navigate(['/edit']);
+  }
 
-    // Vérifier que login/mdp sont correctes, par exemple par une requête à un service REST
-    localStorage.setItem('user', JSON.stringify({login : this.model.username}));
-    localStorage.setItem('profil', JSON.stringify({name: this.model.username, online: true, friends: ['AquaBadTrip','Blinkix', 'Pingourou']}))
+  loginAnonyme(){
+    //check en base pour changer id d'anonyme +1 a chaque co
+    localStorage.setItem('user', JSON.stringify({name : "Ano001", online: true}));
     this.router.navigate(['/home']);
   }
 }

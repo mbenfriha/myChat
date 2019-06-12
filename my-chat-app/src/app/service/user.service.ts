@@ -18,4 +18,8 @@ export class UserService {
 	getUserByPseudo(pseudo: string): Observable<User> {
 		return this.http.get<User>(`/friends/${pseudo}`);
 	}
+
+	signIn(newUser: User): Observable<User>{
+		return this.http.post<User>('/create' ,newUser);
+	}
 }

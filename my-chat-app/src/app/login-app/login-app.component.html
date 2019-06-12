@@ -12,5 +12,7 @@
           <button mat-button class="btn btn-primary pull-right" [disabled]="!f.form.valid">Connexion</button>
         </div>
       </form>
+      <button mat-button (click)="toSignIn()">Pas encore inscrit?</button>
+      <button mat-button (click)="loginAnonyme()">Connexion anonyme</button>
     </div>
   </div>

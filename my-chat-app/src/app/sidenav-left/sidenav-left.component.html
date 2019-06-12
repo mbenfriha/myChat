@@ -1,9 +1,9 @@
 <div>
 	<h1>{{connected.name}}</h1>
-	<button ly-button RouterLink="/edit">Mon profil</button>
-	<button ly-button RouterLink="/">Déconnexion</button>
+	<button ly-button (click)="toEdit()">Mon profil</button>
+	<button ly-button (click)="logout()">Déconnexion</button>
 
-	<div>
+	<div *ngIf="friends">
 		<mat-card *ngFor="let friend of friends">
 			<mat-card-title >
 				<button mat-button (click)="talkTo(friend)">{{friend}}</button>

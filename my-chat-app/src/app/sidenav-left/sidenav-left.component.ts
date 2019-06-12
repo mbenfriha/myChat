@@ -18,6 +18,7 @@ export class SideNavLeftComponent implements OnInit{
   }
 
   ngOnInit(){
+    console.log(this.connected);
     this.connected = this.getUser();
     this.connected.friends.forEach((frd) => {
       this.userService.getUserByPseudo(frd).subscribe((user) => {
@@ -25,16 +26,20 @@ export class SideNavLeftComponent implements OnInit{
       });
     });
   }
-  getLogin() {
-    return JSON.parse(localStorage.getItem('user')).login;
-  }
-
   getUser(): User {
-    return JSON.parse(localStorage.getItem('profil'));
+    return JSON.parse(localStorage.getItem('user'));
   }
 
   talkTo(friend: string){
     this.router.navigate([`/home/${friend}`]);
   }
   
+  toEdit(){
+    this.router.navigate(['/edit']);
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['/']);
+  }
 }

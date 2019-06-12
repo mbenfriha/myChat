@@ -18,23 +18,23 @@ export class BadWordComponent implements AfterViewInit {
   ) {}
 
    
-   filterAndSend(): void{
-     let message : string = this.message.value;
-     this.resultMessage = message;
-     console.log(this.message.value);
-     this.badWords.forEach((word) => {
-       let censured = "*"
-       if(message.toLowerCase().includes(word)){
-         console.log(message.includes(word));
-         let length = word.length;
-         for(var i = 1; i<length; i++){
+  filterAndSend(): void{
+    let message : string = this.message.value;
+    this.resultMessage = message;
+    console.log(this.message.value);
+    this.badWords.forEach((word) => {
+      let censured = "*"
+      if(message.toLowerCase().includes(word)){
+        console.log(message.includes(word));
+        let length = word.length;
+        for(var i = 1; i<length; i++){
           censured += "*"
-         }
-         this.resultMessage = message.toLowerCase().replace(word, censured)
-         console.log(message)
-       }
-     })
-    }
+        }
+        this.resultMessage = message.toLowerCase().replace(word, censured)
+        console.log(message)
+      }
+    })
+  }
     
     ngAfterViewInit(){
     this.badWords = [

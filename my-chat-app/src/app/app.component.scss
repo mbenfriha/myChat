@@ -5,3 +5,10 @@ mat-sidenav-container {
   left: 0;
   right: 0;
 }
+
+router-outlet{
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    background-color: #5c5f63 !important;
+    color: white !important;
+}

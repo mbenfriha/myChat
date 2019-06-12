@@ -1,22 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-<!--
-
-
-<mat-sidenav #sidenav mode="side" [(opened)]="opened">
-
-</mat-sidenav>
-
-
-<button ly-button (click)="sidenav.toggle()">Menu</button>
--->
-
-
-
-
-
-
-<mat-sidenav-container >
+<mat-sidenav-container  >
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
     <sidenav-left></sidenav-left>
   </mat-sidenav>
@@ -28,7 +10,7 @@
       </h1>
     </div>
 
-    <button ly-button (click)="sidenav.toggle()">Menu</button>
+    <button ly-button hidden="onLogin"(click)="sidenav.toggle()">Menu</button>
 
     <router-outlet></router-outlet>
   </mat-sidenav-content>

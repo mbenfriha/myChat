@@ -4,6 +4,7 @@ import { MatButtonModule, MatListModule, MatCardModule, MatLineModule, MatInputM
 import { HomeComponent } from './home.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ProfilFormModule } from '../profil-form/profil.form.module';
+import { HomeResolver } from '../common/resolver/home.resolver';
 
 @NgModule({
 	imports:[
@@ -20,6 +21,7 @@ import { ProfilFormModule } from '../profil-form/profil.form.module';
 	exports:[
 		HomeComponent,
 	],
-	declarations: [HomeComponent]
+	declarations: [HomeComponent],
+	providers:[HomeResolver]
 })
 export class HomeModule {}

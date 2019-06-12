@@ -1,1 +1,17 @@
-coucou
+<div style="text-align:center">
+	<form>
+			<label>Nom d'utilisateur</label>&nbsp;
+			<input matInput [formControl]="pseudo" required/>
+		<br/>
+		<br/>
+				<label>Mot de passe</label>&nbsp;
+			<input matInput [formControl]="password" required/>
+		<br/>
+		<br/>
+			<label>Adresse Email</label>&nbsp;
+			<input matInput [formControl]="mail" required/>
+		<br/>
+		<br/>
+			<button mat-button (click)="onSubmit()" type="submit">Enregistrer</button>
+	</form>
+</div>

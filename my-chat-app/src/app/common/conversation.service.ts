@@ -11,4 +11,8 @@ export class ConversationService{
 	getAll(): Observable<Conversation[]>{
 		return this.http.get<Conversation[]>('');
 	}
+
+	getMyConversation(): Observable<Conversation[]>{
+		return this.http.get<Conversation[]>(`/chat/${localStorage.getItem('user')}`);
+	}
 }

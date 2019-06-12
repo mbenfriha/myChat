@@ -51,8 +51,8 @@ export class HomeComponent implements OnInit, AfterViewInit {
 	this.message.reset();
     }
 	
-	getUser() {
-		return JSON.parse(localStorage.getItem('profil'));
+	getUser(): User {
+		return JSON.parse(localStorage.getItem('user'));
 	  }
 
     ngAfterViewInit(){

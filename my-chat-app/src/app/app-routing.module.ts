@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginAppComponent } from './login-app/login-app.component';
 import { HomeComponent } from './home-component/home.component';
 import { ProfilFormComponent } from './profil-form/profil.form.component';
+import { HomeResolver } from './common/resolver/home.resolver';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -11,7 +12,8 @@ const routes: Routes = [
     component: LoginAppComponent
   },{
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    resolve: {conversations:HomeResolver}
   },{
     path: 'edit',
     component: ProfilFormComponent
@@ -21,6 +23,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers: [
+    HomeResolver
+  ]
 })
 export class AppRoutingModule { }

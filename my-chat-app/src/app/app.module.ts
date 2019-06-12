@@ -26,6 +26,7 @@ import { HomeModule } from './home-component/home.module';
 import { HomeComponent } from './home-component/home.component';
 import { ProfilFormComponent } from './profil-form/profil.form.component';
 import { ProfilFormModule } from './profil-form/profil.form.module';
+import { ConversationService } from './common/conversation.service';
 
 
 
@@ -58,7 +59,9 @@ import { ProfilFormModule } from './profil-form/profil.form.module';
     ProfilFormModule
   ],
 
-  providers: [{ provide: LY_THEME, useClass: MinimaLight, multi: true }],
+  providers: [
+    { provide: LY_THEME, useClass: MinimaLight, multi: true },
+  ],
   bootstrap: [AppComponent],
   exports: [UploadAvatarComponent, BadWordComponent],
 })
