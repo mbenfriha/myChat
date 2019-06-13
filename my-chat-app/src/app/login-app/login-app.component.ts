@@ -38,6 +38,9 @@ export class LoginAppComponent implements OnInit {
     this.userServ.getNewAnonyme().subscribe((user)=> {
       localStorage.setItem('user', JSON.stringify(user));
       this.router.navigate(['/home']);
+    }, ()=>{
+      localStorage.setItem('user', JSON.stringify({name : 'ano001', online:true}));
+      this.router.navigate(['/home']);  
     })
    
   }

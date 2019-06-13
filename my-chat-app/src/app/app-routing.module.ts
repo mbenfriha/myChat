@@ -31,7 +31,8 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
   providers: [
-    HomeResolver
+    HomeResolver,
+    SearchPersonResolver
   ]
 })
 export class AppRoutingModule { }

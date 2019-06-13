@@ -16,6 +16,7 @@ export class SearchPersonResolver implements Resolve<User[]>{
     }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<User[]> | Promise<User[]> | User[] {
-        return this.userServ.getAll();
+        return null;
+        //return this.userServ.getAll();
     }
 }

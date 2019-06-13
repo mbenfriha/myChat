@@ -28,24 +28,26 @@ export class HomeComponent implements OnInit, AfterViewInit {
        console.log(this.connected);
      }
    	filterAndSend(): void{
-	   let censoredMsg = '';
-	   let found : boolean;
-     let message : string = this.message.value;
-     this.resultMessage = message;
-     this.badWords.forEach((word) => {
-		 if(!found){
-		 let censured = "*"
-		 let arraymsg = [];
-       if(message.toLowerCase().includes(word)){
-         let length = word.length;
-         for(var i = 1; i<length; i++){
-          censured += "*"
-		 }
-		 censoredMsg = message.toLowerCase().replace(word, censured);
-		 arraymsg.push();
-		 this.messages.value.push(new Message(this.getUser(), censoredMsg));
-		 found = true;
-		}
+      let censoredMsg = '';
+      let found : boolean;
+      let message : string = this.message.value;
+      this.resultMessage = message;
+      this.badWords.forEach((word) => {
+      if(!found){
+      let censured = "*"
+      let arraymsg = [];
+        if(message.toLowerCase().includes(' '+word+' ') 
+        || message.toLowerCase().includes(' '+word)
+        || message === word){
+          let length = word.length;
+          for(var i = 1; i<length; i++){
+            censured += "*"
+          }
+          censoredMsg = message.toLowerCase().replace(word, censured);
+          arraymsg.push();
+          this.messages.value.push(new Message(this.getUser(), censoredMsg));
+          found = true;
+        }
 		}
 	})
 	if(!found){

@@ -1,4 +1,4 @@
-<mat-sidenav-container  >
+<mat-sidenav-container>
   <mat-sidenav #sidenav mode="side" [(opened)]="opened">
     <sidenav-left></sidenav-left>
   </mat-sidenav>
@@ -9,9 +9,7 @@
         {{ title }}
       </h1>
     </div>
-<div *ngIf="isLogin">
-    <button ly-button (click)="sidenav.toggle()">Menu</button>
-  </div>
+    <button ly-button (click)="sidenav.toggle()">Menu</button><!--[disabled]="isLogin | async" -->
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
