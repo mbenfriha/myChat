@@ -90,7 +90,11 @@ var users = [];
 var messages = [];
 
 io.sockets.on('connection', function (socket) {
-  users.push(socket.user);
+
+  socket.on('newUser', (user) =>   {
+    users.push(user);
+    console.log('new', users);
+  })
   socket.broadcast.emit('user', users);
   socket.emit('message', {messages});
 
@@ -103,9 +107,9 @@ io.sockets.on('connection', function (socket) {
   // Quand un client envoi un message
   socket.on('message', function (message) {
 
-    messages.push({user: message.user, message: message.content});
-    //}
-    socket.emit('new', messages);
-    socket.broadcast.emit('new', messages)
+    messages.push({user: message.user, content: message.content, date:message.date});
+    console.log(messages);
+    socket.emit('new', message);
+    socket.broadcast.emit('new', message)
   });
 });
