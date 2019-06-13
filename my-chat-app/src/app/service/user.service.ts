@@ -16,8 +16,8 @@ export class UserService {
 		return this.http.get<User[]>(`${this.apiURL}user/all`);
 	}
 
-	login(pseudo:string): Observable<User>{
-		return this.http.post<User>(`${this.apiURL}user/pseudo`, pseudo);
+	login(pseudo:string): Observable<any>{
+		return this.http.get<any>(`${this.apiURL}user/${pseudo}`); //, {name:pseudo});
 	}
 
 	getUserByPseudo(pseudo: string): Observable<User> {
@@ -33,6 +33,7 @@ export class UserService {
 	}
 
 	addFriend(user:User): Observable<User>{
-		return this.http.post<User>('/user/add/friend/', user.name);
+		const connected =  localStorage.getItem('user')
+		return this.http.post<User>(`${this.apiURL}user/add/friend/`, {name:connected, friend: user.name} );
 	}
 }

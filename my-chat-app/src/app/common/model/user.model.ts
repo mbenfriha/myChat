@@ -1,7 +1,7 @@
 export class User{
 	name: string;
 	password: string;
-	avatar: ImageBitmap;
+	avatar: string;
 	online: boolean;
 	friends: string[]; // pseudo uniquement
 	request: FriendRequest[]

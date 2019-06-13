@@ -89,6 +89,7 @@ export class HomeComponent implements OnInit, AfterViewInit {
     return JSON.parse(localStorage.getItem('user'));
   }
 
+
   ngAfterViewInit() {
     this.badWords = [
       'anal',

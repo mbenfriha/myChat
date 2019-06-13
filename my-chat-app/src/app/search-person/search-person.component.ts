@@ -38,7 +38,7 @@ export class SearchPersonComponent implements OnInit {
       });
   }
 
-  onSubmit(){
+  search(){
 this.userServ.getAll().subscribe((users: User[])=>{
   users.filter((user)=>{
     if(user.name.includes(this.recherche.value)){
