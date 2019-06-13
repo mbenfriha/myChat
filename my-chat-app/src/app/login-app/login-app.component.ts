@@ -15,7 +15,9 @@ export class LoginAppComponent implements OnInit {
     public userServ: UserService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    localStorage.clear();
+  }
 
   login() {
     this.userServ.login(this.model.username).subscribe((user) =>{

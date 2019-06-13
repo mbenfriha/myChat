@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit, AfterViewInit {
    	ngOnInit(){
        this.route.data.subscribe();
        this.connected = this.getUser();
-       console.log(this.connected);
      }
    	filterAndSend(): void{
       let censoredMsg = '';

@@ -9,7 +9,9 @@
         {{ title }}
       </h1>
     </div>
-    <button ly-button (click)="sidenav.toggle()">Menu</button><!--[disabled]="isLogin | async" -->
+    <div *ngIf="isLogin">
+    <button ly-button (click)="sidenav.toggle()">Menu</button>
+  </div>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
