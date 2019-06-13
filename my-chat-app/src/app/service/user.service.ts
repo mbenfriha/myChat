@@ -11,6 +11,9 @@ export class UserService {
 		private http: HttpClient
 	){}
 
+	getAll(): Observable<User[]>{
+		return this.http.get<User[]>('/user/all');
+	}
 	login(pseudo:string): Observable<User>{
 		return this.http.get<User>(`/profil/${pseudo}`);
 	}

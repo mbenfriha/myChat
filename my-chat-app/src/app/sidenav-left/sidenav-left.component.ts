@@ -9,12 +9,14 @@ import { Router } from '@angular/router';
 })
 export class SideNavLeftComponent implements OnInit{
   connected: User;
-  friends : User[];
+  friends : User[] = [];
   constructor(
     private userService: UserService,
     private router: Router,
   ) {
-
+    if(this.router.url.includes('home')){
+      this.ngOnInit();
+    }
   }
 
   ngOnInit(){
@@ -22,7 +24,14 @@ export class SideNavLeftComponent implements OnInit{
     this.connected = this.getUser();
     this.connected.friends.forEach((frd) => {
       this.userService.getUserByPseudo(frd).subscribe((user) => {
+       
         this.friends.push(user);
+      },(err) => {
+        console.log('Conpemsation erreur')
+        
+          let f = new User();
+          f.name = frd;
+          this.friends.push(f);
       });
     });
   }

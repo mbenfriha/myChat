@@ -1,8 +1,9 @@
-import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy } from "@angular/core";
+import { Component, OnInit, AfterViewInit, ChangeDetectionStrategy, Inject } from "@angular/core";
 import { FormControl } from '@angular/forms';
 import { Message } from '../common/model/message.model';
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../common/model/user.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
 	selector:'app-home',
@@ -15,12 +16,14 @@ export class HomeComponent implements OnInit, AfterViewInit {
 	messages = new BehaviorSubject<Message[]>([]);
 	message = new FormControl('');
   	resultMessage: string;
-  	badWords: string[];
+    badWords: string[];
   
   	constructor(
+      private route: ActivatedRoute
   	) {}
 
    	ngOnInit(){
+       this.route.data.subscribe();
        this.connected = this.getUser();
        console.log(this.connected);
      }

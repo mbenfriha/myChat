@@ -6,10 +6,10 @@
 	<div *ngIf="friends">
 		<mat-card *ngFor="let friend of friends">
 			<mat-card-title >
-				<button mat-button (click)="talkTo(friend)">{{friend}}</button>
+				<button mat-button (click)="talkTo(friend)">{{friend.name}}</button>
 			</mat-card-title>
 			<mat-card-content>
-				<i>Voici le dernier message envoyé entre vous et {{friend}}</i>
+				<i>Voici le dernier message envoyé entre vous et {{friend.name}}</i>
 			</mat-card-content>
 		</mat-card>
 		

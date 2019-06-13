@@ -27,6 +27,8 @@ import { HomeComponent } from './home-component/home.component';
 import { ProfilFormComponent } from './profil-form/profil.form.component';
 import { ProfilFormModule } from './profil-form/profil.form.module';
 import { ConversationService } from './common/conversation.service';
+import { SearchPersonComponent } from './search-person/search-person.component';
+import { SearchPersonModule } from './search-person/search-person.module';
 
 
 
@@ -56,7 +58,8 @@ import { ConversationService } from './common/conversation.service';
     HttpClientModule,
     ReactiveFormsModule,
     HomeModule,
-    ProfilFormModule
+    ProfilFormModule,
+    SearchPersonModule
   ],
 
   providers: [

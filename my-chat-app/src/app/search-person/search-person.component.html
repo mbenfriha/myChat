@@ -1,0 +1,12 @@
+<div>
+  <input matInput placeholder="Rechercher"/>
+  <button mat-button (click)="search()">Rechercher</button>
+</div>
+<div>
+  <mat-list *ngFor="">
+    <mat-list-item> 
+      {{user.name}} 
+      <button mat-button style="float:riht" (click)="sendRequest()"> + Inviter</button>
+    </mat-list-item>
+  </mat-list>
+</div>
