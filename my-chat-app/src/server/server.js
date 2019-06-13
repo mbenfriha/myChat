@@ -6,6 +6,8 @@ const path = require('path');
 const http = require('http');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+
+
 mongoose.connect('mongodb://localhost:27017/Angular');
 mongoose.set('debug', true);
 
@@ -27,6 +29,9 @@ app.set('port', port);
 const server = http.createServer(app);
  
 server.listen(port, () => console.log(`API running on localhost:${port}`));
+
+
+var io = require('socket.io').listen(server);
 
 
 //Connect to mongoDB server
@@ -75,3 +80,32 @@ app.post('user/pseudo',(req, res) => {
    User.find({name : req.body}, (err, data) => {
       err ? res.send(err) :  res.send(data);
    })})
+
+
+
+
+//socket
+
+var users = [];
+var messages = [];
+
+io.sockets.on('connection', function (socket) {
+  users.push(socket.user);
+  socket.broadcast.emit('user', users);
+  socket.emit('message', {messages});
+
+  //Quand un client se deconnecte
+  socket.on('disconnect', function(user) {
+    users = users.filter(i => i !== user);
+    socket.broadcast.emit('user', users)
+  });
+
+  // Quand un client envoi un message
+  socket.on('message', function (message) {
+
+    messages.push({user: message.user, message: message.content});
+    //}
+    socket.emit('new', messages);
+    socket.broadcast.emit('new', messages)
+  });
+});
