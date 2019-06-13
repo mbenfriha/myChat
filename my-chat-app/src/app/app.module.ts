@@ -8,17 +8,9 @@ import { MatSidenavModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { UploadAvatarComponent } from './upload-avatar/upload-avatar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LyThemeModule, LY_THEME } from '@alyle/ui';
-import { MinimaLight } from '@alyle/ui/themes/minima';
 
-
-import { LyButtonModule } from '@alyle/ui/button';
-import { LyToolbarModule } from '@alyle/ui/toolbar';
-import { LyResizingCroppingImageModule } from '@alyle/ui/resizing-cropping-images';
-import { LyIconModule } from '@alyle/ui/icon';
 import { BadWordComponent } from './bad-word/bad-word.component';
 import { SideNavLeftModule } from './sidenav-left/sidenav-left.module';
 import { LoginAppComponent } from './login-app/login-app.component';
@@ -37,7 +29,6 @@ import { SearchPersonModule } from './search-person/search-person.module';
 @NgModule({
   declarations: [
     AppComponent,
-    UploadAvatarComponent,
     BadWordComponent,
     LoginAppComponent,
   ],
@@ -48,13 +39,8 @@ import { SearchPersonModule } from './search-person/search-person.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     BrowserAnimationsModule,
-    LyButtonModule,
-    LyThemeModule.setTheme('minima-light'),
-    LyToolbarModule,
-    LyResizingCroppingImageModule,
     CommonModule,
     FormsModule,
-    LyIconModule,
     HttpClientModule,
     ReactiveFormsModule,
     HomeModule,
@@ -62,10 +48,7 @@ import { SearchPersonModule } from './search-person/search-person.module';
     SearchPersonModule
   ],
 
-  providers: [
-    { provide: LY_THEME, useClass: MinimaLight, multi: true },
-  ],
   bootstrap: [AppComponent],
-  exports: [UploadAvatarComponent, BadWordComponent],
+  exports: [BadWordComponent],
 })
 export class AppModule { }

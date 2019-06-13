@@ -1,6 +1,9 @@
-import { Component, ChangeDetectionStrategy, ViewChild, AfterViewInit } from '@angular/core';
+import {Component, ChangeDetectionStrategy, ViewChild, AfterViewInit, Output} from '@angular/core';
 import { LyTheme2, ThemeVariables, Platform } from '@alyle/ui';
 import { ImgCropperConfig, ImgCropperEvent, LyResizingCroppingImages, ImgCropperErrorEvent } from '@alyle/ui/resizing-cropping-images';
+
+import {  EventEmitter } from '@angular/core';
+
 
 
 const styles = (theme: ThemeVariables) => ({
@@ -127,6 +130,8 @@ export class UploadAvatarComponent implements AfterViewInit {
   croppedImage?: string;
   result: string;
   scale: number;
+
+
   @ViewChild(LyResizingCroppingImages) cropper: LyResizingCroppingImages;
   myConfig: ImgCropperConfig = {
     autoCrop: true,
@@ -136,6 +141,10 @@ export class UploadAvatarComponent implements AfterViewInit {
     type: 'image/jpeg image/png',
     maxFileSize: 2000000
   };
+
+
+  @Output() img = new EventEmitter<string>();
+
 
   constructor(
     private theme: LyTheme2
@@ -153,7 +162,7 @@ export class UploadAvatarComponent implements AfterViewInit {
           y: 236.26357452128866
         }
       };
-      this.cropper.setImageUrl(
+      /*this.cropper.setImageUrl(
         'https://firebasestorage.googleapis.com/v0/b/alyle-ui.appspot.com/o/img%2Flarm-rmah-47685-unsplash-1.png?alt=media&token=96a29be5-e3ef-4f71-8437-76ac8013372c',
         () => {
           this.cropper.setScale(config.scale, true);
@@ -161,13 +170,15 @@ export class UploadAvatarComponent implements AfterViewInit {
           // You can also rotate the image
           // this.cropper.rotate(90);
         }
-      );
+      );*/
     }
   }
 
   onCropped(e: ImgCropperEvent) {
     this.croppedImage = e.dataURL;
     console.log('cropped img: ', e);
+    this.img.emit(this.croppedImage);
+
   }
   onloaded(e: ImgCropperEvent) {
     console.log('img loaded', e);
@@ -180,6 +191,11 @@ export class UploadAvatarComponent implements AfterViewInit {
       alert('Un problème est survenu, verifiez le format de l\'image, uniquement JPEG & PNG');
 
     }
+  }
+
+  setImg() {
+    console.log(this.croppedImage);
+    this.img.emit(this.croppedImage);
   }
 
 

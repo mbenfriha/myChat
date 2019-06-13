@@ -11,13 +11,22 @@ export class ProfilFormComponent implements OnInit{
 	pseudo = new FormControl('');
 	mail = new FormControl('');
 	password = new FormControl('');
+	img = '';
 
 	constructor(
 		public userService: UserService,
 	){}
 
 	ngOnInit(){}
-	onSubmit(){
+
+  setImg(img: string) {
+	  this.img = img;
+	}
+
+  onSubmit(){
+
+	  console.log(this.img);
+
 		let newUser : User;
 		newUser.name = this.pseudo.value;
 		newUser.password = this.password.value;
@@ -25,5 +34,7 @@ export class ProfilFormComponent implements OnInit{
 		console.log(this.pseudo.value);
 		console.log(this.mail.value);
 		console.log(this.password.value);
+		console.log(this.img);
 	}
+
 }

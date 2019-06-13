@@ -12,6 +12,10 @@
 			<input matInput [formControl]="mail" required/>
 		<br/>
 		<br/>
+    <label >Avatar</label>
+    <app-upload-avatar (img)="setImg($event)"></app-upload-avatar>
+    <br>
+    <br>
 			<button mat-button (click)="onSubmit()" type="submit">Enregistrer</button>
 	</form>
 </div>

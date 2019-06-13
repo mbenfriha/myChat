@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule, MatInputModule, MatFormFieldModule } from '@angular/material';
 import { ProfilFormComponent } from './profil.form.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { UploadAvatarComponent } from '../upload-avatar/upload-avatar.component';
+import {UploadAvatarModule } from '../upload-avatar/upload-avatar.module'
 
 @NgModule({
 	imports:[
@@ -13,8 +13,9 @@ import { UploadAvatarComponent } from '../upload-avatar/upload-avatar.component'
 		MatFormFieldModule,
 		ReactiveFormsModule,
 		FormsModule,
+    UploadAvatarModule
 	],
-	exports:[ProfilFormComponent],
-	declarations:[ProfilFormComponent]
+	exports: [ProfilFormComponent],
+	declarations: [ProfilFormComponent]
 })
-export class ProfilFormModule{}
+export class ProfilFormModule {}

@@ -1,4 +1,4 @@
-<div [className]="classes.actions">
+<div class="input-file" [className]="classes.actions">
   <button ly-button color="primary" (click)="_fileInput.click()">
     <ly-icon>image</ly-icon>
     <span>Select File</span>
@@ -6,7 +6,7 @@
   <span [className]="classes.flex"></span>
   <!-- Hidden input -->
   <input #_fileInput type="file" (change)="cropping.selectInputEvent($event)" accept="image/*" hidden>
-  <button raised ly-button bg="accent" *ngIf="cropping.isCropped">Upload</button>
+  <button raised ly-button bg="accent" *ngIf="cropping.isCropped" (click)="setImg()">Upload</button>
 </div>
 
 <div *ngIf="cropping.isLoaded">
