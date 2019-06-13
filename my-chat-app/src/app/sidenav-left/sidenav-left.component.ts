@@ -47,6 +47,10 @@ export class SideNavLeftComponent implements OnInit{
     this.router.navigate(['/edit']);
   }
 
+  search(){
+    this.router.navigate(['/search']);
+  }
+
   logout(){
     localStorage.clear();
     this.router.navigate(['/']);

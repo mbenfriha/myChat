@@ -1,5 +1,6 @@
 import { OnInit, Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-login',
@@ -10,15 +11,22 @@ export class LoginAppComponent implements OnInit {
   model: any = {};
 
   constructor(
-    private router: Router
+    private router: Router,
+    public userServ: UserService,
   ) { }
 
   ngOnInit() { }
 
   login() {
+    this.userServ.login(this.model.username).subscribe((user) =>{
+      localStorage.setItem('user', JSON.stringify(user));
+      this.router.navigate(['/home']);  
+    },(err)=>{
+      localStorage.setItem('user', JSON.stringify({name : this.model.username, online: true, friends: ['AquaBadTrip','Blinkix', 'Pingourou']}));
+      this.router.navigate(['/home']);  
+    });
     // Vérifier  login/mdp requete api
-    localStorage.setItem('user', JSON.stringify({name : this.model.username, online: true, friends: ['AquaBadTrip','Blinkix', 'Pingourou']}));
-    this.router.navigate(['/home']);
+    
   }
   
   toSignIn(){
@@ -27,7 +35,10 @@ export class LoginAppComponent implements OnInit {
 
   loginAnonyme(){
     //check en base pour changer id d'anonyme +1 a chaque co
-    localStorage.setItem('user', JSON.stringify({name : "Ano001", online: true}));
-    this.router.navigate(['/home']);
+    this.userServ.getNewAnonyme().subscribe((user)=> {
+      localStorage.setItem('user', JSON.stringify(user));
+      this.router.navigate(['/home']);
+    })
+   
   }
 }

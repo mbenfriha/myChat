@@ -4,6 +4,7 @@ import { SideNavLeftComponent } from './sidenav-left.component';
 import { LyButtonModule } from '@alyle/ui/button';
 import { CommonModule } from '@angular/common';
 import { ProfilFormModule } from '../profil-form/profil.form.module';
+import { SearchPersonModule } from '../search-person/search-person.module';
 
 @NgModule({
 	imports:[
@@ -12,7 +13,8 @@ import { ProfilFormModule } from '../profil-form/profil.form.module';
 		LyButtonModule,
 		MatCardModule,
 		MatButtonModule,
-		ProfilFormModule
+		ProfilFormModule,
+		SearchPersonModule
 	],
 	exports:[SideNavLeftComponent],
 	declarations:[SideNavLeftComponent],

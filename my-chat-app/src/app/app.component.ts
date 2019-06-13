@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LyTheme2, ThemeVariables } from '@alyle/ui';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 const STYLES = (theme: ThemeVariables) => ({
   '@global': {
@@ -20,15 +21,18 @@ const STYLES = (theme: ThemeVariables) => ({
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+
   readonly classes = this.theme.addStyleSheet(STYLES);
-onLogin: boolean = false
+  isLogin = new BehaviorSubject<boolean>(false);
   title = 'Friends With Interest';
   opened: boolean;
+
   constructor(
     public router :Router,
     private theme: LyTheme2) {
-    if(router.url.includes('login')){
-      this.onLogin = true;
+
+    if(localStorage.getItem('user') !== null){
+      this.isLogin.next(true);
     }
    }
 
