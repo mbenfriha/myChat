@@ -15,7 +15,9 @@ export class LoginAppComponent implements OnInit {
     public userServ: UserService,
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    localStorage.clear();
+  }
 
   login() {
     this.userServ.login(this.model.username).subscribe((user) =>{
@@ -38,6 +40,9 @@ export class LoginAppComponent implements OnInit {
     this.userServ.getNewAnonyme().subscribe((user)=> {
       localStorage.setItem('user', JSON.stringify(user));
       this.router.navigate(['/home']);
+    }, ()=>{
+      localStorage.setItem('user', JSON.stringify({name : 'ano001', online:true}));
+      this.router.navigate(['/home']);  
     })
    
   }

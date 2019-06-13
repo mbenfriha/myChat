@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LyTheme2, ThemeVariables } from '@alyle/ui';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -20,20 +20,22 @@ const STYLES = (theme: ThemeVariables) => ({
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
 
   readonly classes = this.theme.addStyleSheet(STYLES);
-  isLogin = new BehaviorSubject<boolean>(false);
+  isLogin: boolean;
   title = 'Friends With Interest';
   opened: boolean;
 
   constructor(
     public router :Router,
     private theme: LyTheme2) {
+console.log(localStorage);
+    this.isLogin = localStorage.length != 0
+   }
 
-    if(localStorage.getItem('user') !== null){
-      this.isLogin.next(true);
-    }
+   ngOnInit(){
+     this.isLogin = false
    }
 
 }

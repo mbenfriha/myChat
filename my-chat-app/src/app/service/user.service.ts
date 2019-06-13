@@ -16,7 +16,7 @@ export class UserService {
 	}
 
 	login(pseudo:string): Observable<User>{
-		return this.http.get<User>(`/profil/${pseudo}`);
+		return this.http.get<User>(`/user/${pseudo}`);
 	}
 
 	getUserByPseudo(pseudo: string): Observable<User> {
@@ -29,5 +29,9 @@ export class UserService {
 
 	getNewAnonyme(){
 		return this.http.get<User>('/user/anonyme');
+	}
+
+	addFriend(user:User): Observable<User>{
+		return this.http.post<User>('/user/add/friend/', user.name);
 	}
 }
