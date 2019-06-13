@@ -2,6 +2,7 @@ import { OnInit, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { UserService } from '../service/user.service';
 import { User } from '../common/model/user.model';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-profil-form',
@@ -14,6 +15,7 @@ export class ProfilFormComponent implements OnInit{
 	img = '';
 
 	constructor(
+		public router: Router,
 		public userService: UserService,
 	){}
 
@@ -25,12 +27,13 @@ export class ProfilFormComponent implements OnInit{
 
   onSubmit(){
 
-	  console.log(this.img);
-
-		let newUser : User;
+		let newUser= new User();
 		newUser.name = this.pseudo.value;
 		newUser.password = this.password.value;
-		this.userService.signIn(newUser);
+		this.userService.signIn(newUser).subscribe((user)=> {
+			localStorage.setItem('user', JSON.stringify(user));
+			this.router.navigate(['/home']);
+		});
 		console.log(this.pseudo.value);
 		console.log(this.mail.value);
 		console.log(this.password.value);

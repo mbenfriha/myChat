@@ -20,12 +20,12 @@ export class LoginAppComponent implements OnInit {
   }
 
   login() {
-    this.userServ.login(this.model.username).subscribe((user) =>{
+    this.userServ.login(this.model.username).subscribe((user:any) =>{
+      console.log(user);
       localStorage.setItem('user', JSON.stringify(user));
       this.router.navigate(['/home']);  
     },(err)=>{
-      localStorage.setItem('user', JSON.stringify({name : this.model.username, online: true, friends: ['AquaBadTrip','Blinkix', 'Pingourou']}));
-      this.router.navigate(['/home']);  
+      alert('Connexion impossible: mot de passe ou pseudo incorrect')
     });
     // Vérifier  login/mdp requete api
     

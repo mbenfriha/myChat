@@ -7,16 +7,17 @@ import { User } from '../common/model/user.model';
 	providedIn : 'root'
 })
 export class UserService {
+	apiURL = 'http://localhost:3000/';
 	constructor(
 		private http: HttpClient
 	){}
 
 	getAll(): Observable<User[]>{
-		return this.http.get<User[]>('/user/all');
+		return this.http.get<User[]>(`${this.apiURL}user/all`);
 	}
 
 	login(pseudo:string): Observable<User>{
-		return this.http.get<User>(`/user/${pseudo}`);
+		return this.http.post<User>(`${this.apiURL}user/pseudo`, pseudo);
 	}
 
 	getUserByPseudo(pseudo: string): Observable<User> {
@@ -24,7 +25,7 @@ export class UserService {
 	}
 
 	signIn(newUser: User): Observable<User>{
-		return this.http.post<User>('/create' ,newUser);
+		return this.http.post<User>(`${this.apiURL}user/create` ,newUser);
 	}
 
 	getNewAnonyme(){
