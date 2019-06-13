@@ -36,7 +36,9 @@ export class SideNavLeftComponent implements OnInit{
     });
   }
   getUser(): User {
-    return JSON.parse(localStorage.getItem('user'));
+    let user = new User();
+    user.name = localStorage.getItem('user');
+    return user;
   }
 
   talkTo(friend: string){

@@ -56,7 +56,10 @@ export class HomeComponent implements OnInit, AfterViewInit {
     }
 	
 	getUser(): User {
-		return JSON.parse(localStorage.getItem('user'));
+    let user = new User();
+    user.name = localStorage.getItem('user');
+    return user;
+    
 	  }
 
     ngAfterViewInit(){

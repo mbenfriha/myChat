@@ -30,14 +30,11 @@ export class ProfilFormComponent implements OnInit{
 		let newUser= new User();
 		newUser.name = this.pseudo.value;
 		newUser.password = this.password.value;
+		newUser.avatar = this.img;
 		this.userService.signIn(newUser).subscribe((user)=> {
 			localStorage.setItem('user', JSON.stringify(user));
 			this.router.navigate(['/home']);
 		});
-		console.log(this.pseudo.value);
-		console.log(this.mail.value);
-		console.log(this.password.value);
-		console.log(this.img);
 	}
 
 }

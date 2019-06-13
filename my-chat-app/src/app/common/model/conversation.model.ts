@@ -4,6 +4,6 @@ import { Message } from './message.model';
 export class Conversation{
 	nom: string;
 	users: User[];
-	message: Message[];
+	messages: Message[];
 	public: boolean;	
 }

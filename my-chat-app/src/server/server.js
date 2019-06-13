@@ -34,7 +34,7 @@ mongoose.connect('mongodb://localhost:27017/Angular');
 console.log('I\'m Connected !!!');
 mongoose.set('debug', true);
 
-// Clients
+// User
 let UserSchema = new Schema({
    name: String,
 	password: String,
@@ -65,13 +65,65 @@ app.get('/user/all', (req, res) => {
 })
 
 app.post('/user/create', (req, res) => {
-   console.log(req.body)
    User.create(req.body, (err, data) => {
       err ? res.send(err) :  res.send(data);
    })
 })
 
-app.post('user/pseudo',(req, res) => {
-   User.find({name : req.body}, (err, data) => {
+app.post('/user/add/friend', (req, res) => {
+   User.find(req.body.name, (err, data) => {
+      console.log(req.body);
       err ? res.send(err) :  res.send(data);
-   })})
+   })
+})
+
+app.get('/user/:pseudo',(req, res) => {
+   var pseudo = req.params.pseudo
+   User.find({name : pseudo}, (err, data) => {
+      err ? res.send(err) :  res.send(data);
+   })
+})
+
+   //Conversation
+   let ConversationSchema = new Schema({
+      nom: String,
+      users: String,
+      messages: {
+         user: String,
+      	content: String,
+	      date: Date,
+      },
+      public: Boolean,	
+   }, { timestamps: true });
+   
+   ConversationSchema.methods.toDto = function() {
+      return {
+         nom: this.nom,
+         users: this.users,
+         messages: this.messages,
+         public: this.public,
+      }
+   }
+   mongoose.model('Conversation', ConversationSchema);
+   const Conversation = mongoose.model('Conversation');
+   
+   
+   Conversation.createCollection().then(console.log('Collection Conversation Créée !'));
+   
+   app.get('/conv/all', (req, res) => {
+      Conversation.find({}, (err, data) => {
+         err ? res.send(err) :  res.send(data);
+      })
+   })
+   
+   app.post('/conv/create', (req, res) => {
+      Conversation.create(req.body, (err, data) => {
+         err ? res.send(err) :  res.send(data);
+      })
+   })
+   
+   app.get('/conv/:pseudo',(req, res) => {
+      var pseudo = req.params.pseudo
+      Conversation.find({name : pseudo}, (err, data) => {
+         err ? res.send(err) :  res.send(data);
+      })})
